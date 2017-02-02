@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[DisallowMultipleComponent]
+[RequireComponent(typeof(UnityEngine.AI.NavMesh))]
 public class PlayerClickToMove : MonoBehaviour {
 
-	public float PlayerMoveSpeed;
-	public float PlayerRotationSpeed;
 	private Vector3 	targetPosition;
-	private Quaternion 	targetRotation;
-	private Transform PlayerTransform;
- 
+	private Transform   PlayerTransform;
+    UnityEngine.AI.NavMeshAgent agent;
+
+void Awake()
+{
+    agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+}
 void Start()
  {
      PlayerTransform = transform;
      targetPosition = PlayerTransform.position;
-	 targetRotation = Quaternion.identity;
  }
  
  void Update () 
  {                
-     //Amount to move, move speed
-     float moveAmount = PlayerMoveSpeed * Time.deltaTime;
-	 float rotateSpeed = PlayerRotationSpeed * Time.deltaTime;
-     
+     SetTargetPosition();
+ }
+ void SetTargetPosition()
+ {
      //Move the Player after they have clicked the Left Mouse Button on a location
      if (Input.GetMouseButtonDown(0))
      {
@@ -31,12 +34,23 @@ void Start()
          
          if (playerPlane.Raycast(ray, out hitdist)) 
          {
-             Vector3 targetPoint = ray.GetPoint(hitdist);
+             //Vector3 targetPoint = ray.GetPoint(hitdist);
              targetPosition = ray.GetPoint(hitdist);
-             targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+             //targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
          }                        
      }
-     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed);
-     PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, targetPosition, moveAmount);
+     MovePlayer();
+ }
+ void MovePlayer()
+ {
+    //Amount to move, move speed
+    //float moveAmount = PlayerMoveSpeed * Time.deltaTime;
+	//float rotateSpeed = PlayerRotationSpeed * Time.deltaTime;
+
+    //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotateSpeed);
+    //PlayerTransform.position = Vector3.MoveTowards(PlayerTransform.position, targetPosition, moveAmount);
+    
+    agent.SetDestination(targetPosition);
+    Debug.DrawLine(PlayerTransform.position, targetPosition, Color.green);
  }
 }
