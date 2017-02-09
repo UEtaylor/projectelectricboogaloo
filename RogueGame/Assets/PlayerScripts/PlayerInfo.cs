@@ -4,52 +4,57 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour {
 
-	public class Race
+	public class Player
     {
         public int startingHealth;
         public int currentHealth;
         public int startingStr;
-        public float startingSpeed;
-        public float mana;
+        public int startingSpeed;
+        public int projectile1Count;
+        public int projectile1Range;
+        public int projectile2Count;
+        public int projectile2Range;
+        public int weapon1Str;
+        public int weapon2Str;
+        public int projectile1Str;
+        public int projectile2Str;
+        public int attackSpeed;
         
-        public Race(int hlth, int str, float spd)
+        public Player(int hlth, int str, int spd)
         {
             startingHealth = hlth;
             currentHealth = startingHealth;
             startingStr = str;
             startingSpeed = spd;
-        }
-        
-        public Race(int hlth, int str, float spd, float m)
-        {
-            startingHealth = hlth;
-            currentHealth = startingHealth;
-            startingStr = str;
-            startingSpeed = spd;
-            mana = m;
         }
         
         // Constructor
-        public Race()
+        public Player()
         {
             startingHealth = 150;
             currentHealth = startingHealth;
-            startingStr = 100;
+            startingStr = 5;
             startingSpeed = 3;
+            weapon1Str = 3;
+            weapon2Str = 5;
+            projectile1Str = 5;
+            projectile1Count = 3;
+            projectile1Range = 7;
+            projectile2Str = 11;
+            projectile2Count = 3;
+            projectile2Range = 7;
+            attackSpeed = 1;
+            
         }
     }
     
 
-    // Creating an Instance (an Object) of the Race class
-    public Race myRace = new Race();
-    
-    void Start()
-    {
-        Debug.Log(myRace.startingHealth);
-    }
+  
+    public Player myPlayer = new Player();
+
     public void TakeDamage(int damage)
     {
-        myRace.currentHealth -= damage;
-        Debug.Log(myRace.currentHealth);
+        myPlayer.currentHealth -= damage;
+        Debug.Log(myPlayer.currentHealth);
     }
 }

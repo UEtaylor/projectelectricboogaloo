@@ -46,9 +46,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraScripts\CameraFollowPlayer.cs" />
-     <Compile Include="Assets\PlayerScripts\PlayerClickToMove.cs" />
+     <Compile Include="Assets\CameraScripts\CameraOrbit.cs" />
+     <Compile Include="Assets\CameraScripts\Raycasting.cs" />
+     <Compile Include="Assets\ConfigureGame.cs" />
+     <Compile Include="Assets\Enviroment\EnviromentHealth.cs" />
+     <Compile Include="Assets\LoginInformation\AccountData.cs" />
+     <Compile Include="Assets\LoginInformation\DisplayNameMenu.cs" />
+     <Compile Include="Assets\LoginInformation\GameInformation.cs" />
+     <Compile Include="Assets\LoginInformation\LoginMenu.cs" />
+     <Compile Include="Assets\LoginInformation\MainMenuController.cs" />
+     <Compile Include="Assets\LoginInformation\PlayerFinderController.cs" />
+     <Compile Include="Assets\LoginInformation\RegisterMenu.cs" />
+     <Compile Include="Assets\LoginInformation\SaveInformation.cs" />
+     <Compile Include="Assets\LoginInformation\StoreDataLoader.cs" />
+     <Compile Include="Assets\LoginInformation\TabMenuControl.cs" />
+     <Compile Include="Assets\LoginInformation\UserRegistration.cs" />
+     <Compile Include="Assets\PlayerScripts\FadeObjectInOut.cs" />
+     <Compile Include="Assets\PlayerScripts\PlayerAttack.cs" />
      <Compile Include="Assets\PlayerScripts\PlayerInfo.cs" />
+     <Compile Include="Assets\PlayerScripts\PlayerMovement.cs" />
+     <Compile Include="Assets\PlayerScripts\RangeWeaponFlight.cs" />
      <Compile Include="Assets\PortalScripts\EnemyAttack.cs" />
      <Compile Include="Assets\PortalScripts\EnemyGeneration.cs" />
      <Compile Include="Assets\PortalScripts\EnemyInfo.cs" />
