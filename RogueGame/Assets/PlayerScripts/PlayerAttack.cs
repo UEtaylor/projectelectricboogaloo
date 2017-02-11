@@ -6,10 +6,19 @@ public class PlayerAttack : NetworkBehaviour {
 
 	private PlayerInfo info;
 	private PlayerMovement move;
-	private int currentAttack;
 	private IEnumerator coroutine;
-	public GameObject projectile1Prefab;
-	public GameObject projectile2Prefab;
+	public class Weapon
+    {
+		public int ID;
+		public int Str;
+		public int Spd;
+		public int Range;
+		public int Type;
+		public GameObject Prefab;
+	}
+
+	public Weapon wep1 = new Weapon();
+	public Weapon wep2 = new Weapon();
 	void Start()
 	{
 		if (!isLocalPlayer)
@@ -85,55 +94,65 @@ public class PlayerAttack : NetworkBehaviour {
 		}
 		else
 		{
-			Ability_5(target);
+			Default_Attack(target);
 		}
 	}
 	
 	void Ability_1(GameObject target)
 	{
-		bool melee = true;
-		float range, damage, speed;
+		float damage, range, speed;
 		speed = info.myPlayer.attackSpeed;
-		if(melee)
-		{
-			range = 1.5f;
-			damage = info.myPlayer.weapon1Str + info.myPlayer.startingStr;
-		}
-		else
-		{
-			range = info.myPlayer.projectile1Range;
-			damage = info.myPlayer.startingStr + info.myPlayer.projectile1Str;
+		range = wep1.Range;
+		damage = info.myPlayer.maxStr + wep1.Str;
 
-			GameObject clone = (GameObject)Instantiate(projectile2Prefab, transform.position, transform.rotation);
+		GameObject clone = (GameObject)Instantiate(wep1.Prefab, transform.position, transform.rotation);
 
-			int damageAmount = info.myPlayer.startingStr + info.myPlayer.projectile1Str;
-
-			clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damage);
-		}
+		clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damage);
+		
 	}
 	void Ability_2(GameObject target)
 	{
+		float damage, range, speed;
+		speed = info.myPlayer.attackSpeed;
+		range = wep1.Range;
+		damage = info.myPlayer.maxStr + wep1.Str;
 
+		GameObject clone = (GameObject)Instantiate(wep1.Prefab, transform.position, transform.rotation);
+
+		clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damage);
 	}
 	void Ability_3(GameObject target)
 	{
+		float damage, range, speed;
+		speed = info.myPlayer.attackSpeed;
+		range = wep1.Range;
+		damage = info.myPlayer.maxStr + wep1.Str;
 
+		GameObject clone = (GameObject)Instantiate(wep1.Prefab, transform.position, transform.rotation);
+
+		clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damage);
 	}
 	void Ability_4(GameObject target)
 	{
-		GameObject clone = (GameObject)Instantiate(projectile2Prefab, transform.position, transform.rotation);
+		float damage, range, speed;
+		speed = info.myPlayer.attackSpeed;
+		range = wep1.Range;
+		damage = info.myPlayer.maxStr + wep1.Str;
 
-		int damageAmount = info.myPlayer.startingStr + info.myPlayer.projectile1Str;
+		GameObject clone = (GameObject)Instantiate(wep1.Prefab, transform.position, transform.rotation);
 
-		clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damageAmount);
+		clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damage);
 	}
-	void Ability_5(GameObject target)
+	void Default_Attack(GameObject target)
 	{
-		GameObject clone = (GameObject)Instantiate(projectile1Prefab, transform.position, transform.rotation);
+		float damage, range, speed;
+		speed = info.myPlayer.attackSpeed;
+		range = wep1.Range;
+		damage = info.myPlayer.maxStr + wep1.Str;
 
-		int damageAmount = info.myPlayer.startingStr + info.myPlayer.projectile2Str;
+		GameObject clone = (GameObject)Instantiate(wep1.Prefab, transform.position, transform.rotation);
 
-		clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damageAmount);
+		clone.GetComponent<RangeWeaponFlight>().SetFlight(this.gameObject, target, 15f, damage);
 	}
 
 	private IEnumerator IsAttacking(float waitTime)

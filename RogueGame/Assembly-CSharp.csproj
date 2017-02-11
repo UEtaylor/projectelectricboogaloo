@@ -50,9 +50,11 @@
      <Compile Include="Assets\CameraScripts\Raycasting.cs" />
      <Compile Include="Assets\ConfigureGame.cs" />
      <Compile Include="Assets\Enviroment\EnviromentHealth.cs" />
+     <Compile Include="Assets\LoadoutSelectionButton.cs" />
+     <Compile Include="Assets\LoadoutStats.cs" />
      <Compile Include="Assets\LoginInformation\AccountData.cs" />
      <Compile Include="Assets\LoginInformation\DisplayNameMenu.cs" />
-     <Compile Include="Assets\LoginInformation\GameInformation.cs" />
+     <Compile Include="Assets\LoginInformation\LoadWeaponData.cs" />
      <Compile Include="Assets\LoginInformation\LoginMenu.cs" />
      <Compile Include="Assets\LoginInformation\MainMenuController.cs" />
      <Compile Include="Assets\LoginInformation\PlayerFinderController.cs" />
@@ -70,6 +72,7 @@
      <Compile Include="Assets\PortalScripts\EnemyGeneration.cs" />
      <Compile Include="Assets\PortalScripts\EnemyInfo.cs" />
      <Compile Include="Assets\PortalScripts\EnemyNav.cs" />
+     <Compile Include="Assets\SelectCurrentLoadout.cs" />
      <Compile Include="Assets\UIScripts\InGame\ClickAnimationScript.cs" />
      <Compile Include="Assets\UIScripts\InGame\StartClickScript.cs" />
  <Reference Include="UnityEngine.UI">
